@@ -1,0 +1,25 @@
+### Aim: To reverse a specific portion of a singly linked list between given positions left and right while keeping the rest of the list unchanged.
+
+### Objective: 
+To understand how to reverse a sublist within a linked list efficiently.
+To modify linked list pointers to achieve the reversal in a specific range.
+To ensure the algorithm runs optimally with minimal time and space complexity.
+To enhance problem-solving skills in linked list manipulation and pointer adjustments.
+
+### Code:
+class Solution {
+public:
+    bool hasCycle(ListNode* head) {
+        if (!head) return false;  
+        ListNode* slow = head;  
+        ListNode* fast = head;  
+        while (fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;          
+            fast = fast->next->next;    
+            if (slow == fast) {
+                return true; 
+            }
+        }
+        return false;  
+    }
+};
