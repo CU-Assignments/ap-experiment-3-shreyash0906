@@ -1,0 +1,38 @@
+### Aim: To merge two sorted linked lists into a single sorted linked list by rearranging and splicing their nodes.
+
+### Objective: 
+  -To understand how to merge two sorted linked lists efficiently.
+  -To maintain the sorted order while merging the two lists.
+  -To optimize the merging process using an iterative or recursive approach.
+  -To improve problem-solving skills related to linked list manipulation and pointer adjustments.
+
+### Code:
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if (!list1) return list2;  
+        if (!list2) return list1;  
+        ListNode* head = nullptr;
+        ListNode* tail = nullptr;
+        if (list1->val < list2->val) {
+            head = tail = list1;
+            list1 = list1->next;
+        } else {
+            head = tail = list2;
+            list2 = list2->next;
+        }
+        while (list1 && list2) {
+            if (list1->val < list2->val) {
+                tail->next = list1;
+                list1 = list1->next;
+            } else {
+                tail->next = list2;
+                list2 = list2->next;
+            }
+            tail = tail->next;
+        }
+        if (list1) tail->next = list1;
+        else tail->next = list2;
+        return head;  
+    }
+};
