@@ -1,0 +1,27 @@
+### Aim: To delete the middle node of a given linked list and return the modified linked list while maintaining the original order of other elements.
+
+### Objective: 
+  -To identify the middle node in a singly linked list using efficient traversal techniques. 
+  -To modify the linked list structure by removing the middle node without affecting other nodes.
+  -To implement an optimal solution with minimal time and space complexity.
+
+### Code:
+class Solution {
+public:
+    ListNode* deleteMiddle(ListNode* head) {
+        if (!head || !head->next) return nullptr; 
+        ListNode* fast = head;
+        ListNode* slow = head;
+        ListNode* prev = nullptr;
+
+
+        while (fast && fast->next) {
+            fast = fast->next->next;
+            prev = slow;
+            slow = slow->next;
+        }
+        prev->next = slow->next;
+
+        return head;
+    }
+};
