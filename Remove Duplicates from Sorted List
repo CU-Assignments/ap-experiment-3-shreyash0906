@@ -1,0 +1,27 @@
+### Aim: To remove duplicate elements from a sorted linked list, ensuring each element appears only once while maintaining the sorted order.
+
+### Objective: 
+    -To understand how to traverse a linked list efficiently.
+    -To identify and remove consecutive duplicate nodes in a sorted linked list.
+    -To modify pointers in a linked list to maintain the correct structure after deletion.
+    -To return the modified linked list while preserving its sorted order.
+
+### Code:
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (!head) return nullptr;
+
+        ListNode* current = head;
+
+        while (current != nullptr && current->next != nullptr) {
+            if (current->val == current->next->val) {
+                current->next = current->next->next;  
+            } else {
+                current = current->next; 
+            }
+        }
+
+        return head;
+    }
+};
