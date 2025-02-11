@@ -1,0 +1,24 @@
+### Aim: To reverse a given singly linked list and return the modified linked list.
+
+### Objective: 
+    -To understand the concept of linked list reversal.
+    -To efficiently traverse and modify a linked list.
+    -To update node pointers to achieve the reversed order.
+    -To implement an in-place reversal algorithm without using extra space.
+
+### Code:
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return head;
+        }
+        ListNode* reversedList = reverseList(head->next);
+
+    
+        head->next->next = head;
+        head->next = nullptr;
+
+        return reversedList;
+    }
+};
